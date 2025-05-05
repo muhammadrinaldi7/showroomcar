@@ -22,26 +22,39 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const { make, unitModel, year, engine, category } = await request.json();
+  try {
+    const { make, unitModel, year, engine, category } = await request.json();
 
-  const carUnit = await prisma.carUnit.create({
-    data: {
-      unitModel: unitModel,
-      make: make,
-      year: year,
-      engine: engine,
-      category: category,
-    },
-  });
+    const carUnit = await prisma.carUnit.create({
+      data: {
+        unitModel: unitModel,
+        make: make,
+        year: year,
+        engine: engine,
+        category: category,
+      },
+    });
 
-  return NextResponse.json(
-    {
-      success: true,
-      message: "Create Data Cars",
-      data: carUnit,
-    },
-    {
-      status: 201,
-    }
-  );
+    return NextResponse.json(
+      {
+        success: true,
+        message: "Create Data Cars",
+        data: carUnit,
+      },
+      {
+        status: 201,
+      }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        sucess: false,
+        message: "Gagal Menambahkan Data Unit Mobil",
+        data: error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 }
