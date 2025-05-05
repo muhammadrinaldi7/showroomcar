@@ -1,2 +1,3 @@
 /src/generated/*
 /generated/prisma/
+src/generated/

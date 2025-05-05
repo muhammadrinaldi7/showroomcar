@@ -15,6 +15,7 @@ const eslintConfig = [
     rules: {
       "@src/generated/*": "off",
     },
+    ignorePatterns: ["src/generated/**/*"],
   }),
 ];
 
