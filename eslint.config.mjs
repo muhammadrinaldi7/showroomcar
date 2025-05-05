@@ -15,7 +15,11 @@ const eslintConfig = [
     rules: {
       "@src/generated/*": "off",
     },
-    ignorePatterns: ["src/generated/**/*", "prisma/generated/**/*"],
+    ignorePatterns: [
+      "src/generated/**/*",
+      "prisma/generated/**/*",
+      "prisma/prisma/generated/**/*",
+    ],
   }),
 ];
 
